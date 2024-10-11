@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package core;
+
+
+message TestRequest {
+  int32 x = 1;
+}
+
+message TestResponse {
+  string result = 1;
+}
+
+
+service CoreService {
+  rpc Add (TestRequest) returns (TestResponse);
+}

@@ -1,0 +1,36 @@
+target-version = "py312"
+
+exclude = [
+    "src/core/db/alembic/*",
+    "src/core/grpc_server/proto/*",
+]
+
+# Set the maximum line length to 120.
+line-length = 120
+
+[lint]
+# Add the `line-too-long` rule to the enforced rule set. By default, Ruff omits rules that
+# overlap with the use of a formatter, like Black, but we can override this behavior by
+# explicitly adding the rule.
+extend-select = ["E501"]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # isort
+    "I",
+]
+ignore = ["F401"]
+
+
+[format]
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+# Like Black, use double quotes for strings.
+quote-style = "double"
+exclude = ["*.pyi"]
+
+#[lint.per-file-ignores]
+## Ignore `F401` (import violations) in all `__init__.py` files
+#"__init__.py" = ["F401"]
