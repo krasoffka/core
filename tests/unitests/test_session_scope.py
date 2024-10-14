@@ -3,7 +3,7 @@ import pytest
 from core.grpc_server.proto.core_service_pb2 import TestRequest
 
 
-@pytest.mark.asyncio(loop_scope='function')
+@pytest.mark.asyncio(loop_scope='session')
 async def test_stub1(stub) -> None:
     await stub.Test(TestRequest(x=1))
     assert True
