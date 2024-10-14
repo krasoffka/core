@@ -3,11 +3,11 @@ import asyncio
 import grpc
 from grpc import Server
 from grpc_reflection.v1alpha import reflection
-from grpc_server.proto.service_pb2_grpc import add_CoreServiceServicer_to_server
-from settings import settings
 
-import core.grpc_server.proto.service_pb2 as service
+import core.grpc_server.proto.core_service_pb2 as service
 from core.grpc_server.grpc_servicer import CoreServiceGrpc
+from core.grpc_server.proto.core_service_pb2_grpc import add_CoreServiceServicer_to_server
+from core.settings import settings
 
 # Coroutines to be invoked when the event loop is shutting down.
 _cleanup_coroutines = []
@@ -25,11 +25,11 @@ async def init_grpc_server() -> Server:
         server,
     )
     service_names = [
-        service.DESCRIPTOR.services_by_name["CoreService"].full_name,
+        service.DESCRIPTOR.services_by_name['CoreService'].full_name,
         reflection.SERVICE_NAME,
     ]
     reflection.enable_server_reflection(service_names, server)  # type: ignore[arg-type]
-    listen_addr = f"[::]:{settings.GRPC_SERVICE_PORT}"
+    listen_addr = f'[::]:{settings.GRPC_SERVICE_PORT}'
     server.add_insecure_port(listen_addr)
     return server
 
@@ -38,7 +38,7 @@ async def serve() -> None:
     server = await init_grpc_server()
     await server.start()
 
-    print(f"Starting grpc server on port {settings.GRPC_SERVICE_PORT}")
+    print(f'Starting grpc server on port {settings.GRPC_SERVICE_PORT}')
 
     async def server_graceful_shutdown() -> None:
         # logger.info("Starting graceful shutdown...")
@@ -57,5 +57,5 @@ def run():
         loop.close()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     run()

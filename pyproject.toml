@@ -15,6 +15,7 @@ grpcio = "^1.66.2"
 grpcio-reflection = "^1.66.2"
 pydantic-settings = "^2.5.2"
 grpcio-tools = "^1.66.2"
+protobuf = "5.27.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -25,6 +26,10 @@ pytest-asyncio = "^0.24.0"
 pytest-vcr = "^1.0.2"
 grpcio-tools = "^1.66.2"
 mypy-protobuf = "^3.6.0"
+testcontainers = "^4.8.1"
+pytest-env = "^1.1.5"
+pytest-xdist = "^3.6.1"
+pytest-anyio = "^0.0.0"
 
 
 [build-system]

@@ -28,7 +28,7 @@ ignore = ["F401"]
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
 # Like Black, use double quotes for strings.
-quote-style = "double"
+quote-style = "single"
 exclude = ["*.pyi"]
 
 #[lint.per-file-ignores]

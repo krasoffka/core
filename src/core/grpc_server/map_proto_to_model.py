@@ -10,5 +10,5 @@ MAP_PROTO_TO_MODEL = {
 def map_proto_to_model(proto):
     model = MAP_PROTO_TO_MODEL.get(type(proto), None)
     if model is None:
-        raise NotImplementedError(f"Model for {type(proto)} is not implemented to MAP_PROTO_TO_MODEL")
+        raise NotImplementedError(f'Model for {type(proto)} is not implemented to MAP_PROTO_TO_MODEL')
     return model.from_proto(proto)
